@@ -5,8 +5,10 @@ whether or not there exist 2 numbers in S whose sum is exactly M. The algorithm
 of testing all possible 2 numbers in S will take O(n
 2
 ) time and it is unacceptable.
+
 a) Design a more efficient algorithm for solving this problem. Analyze the time
 complexity of your algorithm.
+
 b) Extend your algorithm for the following case: determine whether or not there
 exist 3 numbers in S whose sum is exactly M.
 
