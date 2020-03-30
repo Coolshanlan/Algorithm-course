@@ -18,7 +18,7 @@ How to implement merge-sort such that the extra space used is about n/2 where n
 is the number of input elements?
 > Use ```list.append``` to finish
 > 
-![](/week2/merge_sort_revisespace.png =80x)
+![example week2](https://github.com/Coolshanlan/Algorithm-course/blob/master/week2/merge_sort_revisespace.png?raw=true =82x)
 ## week3-p1
 Given a sorted array A[1...n] of n distinct integers, you want to find out the index
 i for which A[i] = i if it exists. Please design a Divide-and-Conquer algorithm that
