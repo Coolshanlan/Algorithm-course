@@ -12,12 +12,16 @@ complexity of your algorithm.
 b) Extend your algorithm for the following case: determine whether or not there
 exist 3 numbers in S whose sum is exactly M.
 
-> I Use ```HashTable``` to finish
+> Use ```HashTable``` to finish
 ## week2-p3
 How to implement merge-sort such that the extra space used is about n/2 where n
 is the number of input elements?
-> I Use ```list.append``` to finish
+> Use ```list.append``` to finish
+> ![example week2](/week2/merge_sort_revisespace.png)
 ## week3-p1
 Given a sorted array A[1...n] of n distinct integers, you want to find out the index
 i for which A[i] = i if it exists. Please design a Divide-and-Conquer algorithm that
 runs in time O(lgn). (Analyze your algorithm and show it is correct.)
+## week4-p4
+
+## week4-p8
