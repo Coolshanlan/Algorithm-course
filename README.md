@@ -19,7 +19,7 @@ is the number of input elements?
 > Use ```list.append``` to finish
 > 
 > <p align="center">
-> <img width="300" src="week2/merge_sort_revisespace.png">
+> <img width="500" src="week2/merge_sort_revisespace.png">
 > </p>
 ## week3-p1
 Given a sorted array A[1...n] of n distinct integers, you want to find out the index
