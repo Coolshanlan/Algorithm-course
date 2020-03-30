@@ -1,4 +1,4 @@
-<h1 align="center" font-color="red">Algorithm Course Homework</h1>
+**<h1 align="center" style="color:#FFC61C">Algorithm Course Homework</h1>**
 
 ## week1-p1-3
 Given a set S of n integers, and another number M, we want to determine
