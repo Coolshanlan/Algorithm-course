@@ -1,4 +1,4 @@
-<h1 align="center">Algorithm Course Homework</h1>
+<h1 align="center" color="red">Algorithm Course Homework</h1>
 
 ## week1-p1-3
 Given a set S of n integers, and another number M, we want to determine
@@ -17,12 +17,10 @@ exist 3 numbers in S whose sum is exactly M.
 ## week2-p3
 How to implement merge-sort such that the extra space used is about n/2 where n
 is the number of input elements?
-:::spoiler 點選顯示更多內容
 > Use `list.append` to finish
 <p>
 <img width="500" src="week2/merge_sort_revisespace.png">
 </p>
-:::
 ## week3-p1
 Given a sorted array A[1...n] of n distinct integers, you want to find out the index
 i for which A[i] = i if it exists. Please design a Divide-and-Conquer algorithm that
