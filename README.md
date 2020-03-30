@@ -23,5 +23,21 @@ Given a sorted array A[1...n] of n distinct integers, you want to find out the i
 i for which A[i] = i if it exists. Please design a Divide-and-Conquer algorithm that
 runs in time O(lgn). (Analyze your algorithm and show it is correct.)
 ## week4-p4
+**Inversions**
 
+Let A[1....n] be an array of n distinct numbers. If i<j and A[i] > A[j], then the
+pair (i,j) is called an ```inversion``` of A.
+
+a) List the five inversions of the array 〈3,8,6,1,
+42〉.
+
+b) What array with elements from the set ｛1,2 . . . . ,n｝has the most inversions?
+How many does it have?
+
+c) What is the relationship between the running time of insertion sort and the
+number of inversions in the input array? Justify your answer.
+
+d) Give an algorithm that determines the number of inversions in any permutation
+on n elements in θ(nlogn) worst-case time. (Hint: Modify merge sort.)
 ## week4-p8
+Directly solve the origin stock buying problem in θ(n) time. 

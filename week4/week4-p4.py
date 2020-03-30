@@ -1,8 +1,5 @@
-import pretty_errors
-
-
 def merge(l1, l2):
-    #global invers
+    global invers
     index_l = 0
     index_r = 0
     left_max = len(l1)
