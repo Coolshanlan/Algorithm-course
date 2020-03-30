@@ -1,4 +1,4 @@
-# Algorithm-course
+<h1 align="center">Algorithm Course Homework</h1>
 ## week1-p1-3
 Given a set S of n integers, and another number M, we want to determine
 whether or not there exist 2 numbers in S whose sum is exactly M. The algorithm
@@ -17,7 +17,6 @@ exist 3 numbers in S whose sum is exactly M.
 How to implement merge-sort such that the extra space used is about n/2 where n
 is the number of input elements?
 > Use ```list.append``` to finish
-> 
 <p>
 <img width="500" src="week2/merge_sort_revisespace.png">
 </p>
