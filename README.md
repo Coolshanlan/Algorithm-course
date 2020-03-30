@@ -1,5 +1,7 @@
 <h1 align="center">Algorithm Course Homework</h1>
 
+[TOC]
+
 ## week1-p1-3
 Given a set S of n integers, and another number M, we want to determine
 whether or not there exist 2 numbers in S whose sum is exactly M. The algorithm
@@ -13,11 +15,11 @@ complexity of your algorithm.
 b) Extend your algorithm for the following case: determine whether or not there
 exist 3 numbers in S whose sum is exactly M.
 
-> Use ```HashTable``` to finish
+> Use `HashTable` to finish
 ## week2-p3
 How to implement merge-sort such that the extra space used is about n/2 where n
 is the number of input elements?
-> Use ```list.append``` to finish
+> Use `list.append` to finish
 <p>
 <img width="500" src="week2/merge_sort_revisespace.png">
 </p>
@@ -29,7 +31,7 @@ runs in time O(lgn). (Analyze your algorithm and show it is correct.)
 **Inversions**
 
 Let A[1....n] be an array of n distinct numbers. If i<j and A[i] > A[j], then the
-pair (i,j) is called an ```inversion``` of A.
+pair (i,j) is called an `inversion` of A.
 
 a) List the five inversions of the array 〈3,8,6,1,
 42〉.
