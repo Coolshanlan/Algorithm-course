@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "C:\\Users\\Joey\\Anaconda3\\envs\\ame\\python.exe",
+    //"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
+    }
+}

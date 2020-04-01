@@ -21,10 +21,12 @@ is the number of input elements?
 <p>
 <img width="500" src="week2/merge_sort_revisespace.png">
 </p>
+
 ## week3-p1
 Given a sorted array A[1...n] of n distinct integers, you want to find out the index
 i for which A[i] = i if it exists. Please design a Divide-and-Conquer algorithm that
 runs in time O(lgn). (Analyze your algorithm and show it is correct.)
+
 ## week4-p4
 **Inversions**
 

@@ -3,13 +3,29 @@
     // 暫留以檢視現有屬性的描述。
     // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: 目前檔案",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        }
-    ]
+    "configurations": [{
+        "name": "Python Launch",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal"
+    }, {
+        "name": "(gdb) Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": true,
+        "MIMode": "gdb",
+        "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
+        "preLaunchTask": "createexe",
+        "setupCommands": [{
+            "description": "啟用 gdb 的美化顯示",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+        }]
+    }]
 }
