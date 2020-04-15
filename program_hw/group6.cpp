@@ -1,7 +1,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <time.h>
+#include <stdio.h>
+#include <fstream>
+#include <iostream>
+#include <random>
+#include <stdlib.h> /* 亂數相關函數 */
+#include <time.h>   /* 時間相關函數 */
 using namespace std;
+int times_2 = 0;
+int times_divide = 0;
+int times_mult = 0;
 string remove_zero(string num)
 {
     int len = num.size();
@@ -113,7 +123,9 @@ string karatsuba(string num1, string num2)
     }
     if (min(num1.size(), num2.size()) <= 1)
     {
+        times_2 = times_2 + 1;
         return to_string(stoi(num1) * stoi(num2));
+        //return to_string((num1[0] - '0') * (num2[0] - '0'));
     }
     int maxlen = max(num1.size(), num2.size());
     paddingzero(&num1, maxlen - num1.size(), 1);
@@ -139,20 +151,21 @@ string dynamic_karatsuba(int divide, string num1, string num2)
         num1 = num2;
         num2 = tmp;
     }
-    if (min(num1.size(), num2.size()) < divide || min(num1.size(), num2.size()) < 3 || divide <= 3)
+    int maxlen = max(num1.size(), num2.size());
+    if (maxlen <= 1)
     {
+        times_divide = times_divide + 1;
         return to_string(stoi(num1) * stoi(num2));
     }
-    else if (min(num1.size(), num2.size()) < divide)
+    else if (maxlen < divide)
     {
-        divide = min(num1.size(), num2.size());
+        divide = 2;
     }
+    paddingzero(&num1, maxlen - num1.size(), 1);
+    paddingzero(&num2, maxlen - num2.size(), 1);
     vector<string> part_multiplication;
     vector<string> sub_num1;
     vector<string> sub_num2;
-    int maxlen = max(num1.size(), num2.size());
-    paddingzero(&num1, maxlen - num1.size(), 1);
-    paddingzero(&num2, maxlen - num2.size(), 1);
     int maxlen_divide = maxlen / divide;
     int last_len = (maxlen - maxlen_divide * divide);
 
@@ -182,7 +195,6 @@ string dynamic_karatsuba(int divide, string num1, string num2)
     vector<string> part_plus;
     for (int i = 0; i < terms - 1; i++)
     {
-
         for (int j = i + 1; j < terms; j++)
         {
             string plus_num1 = sub_num1[i];
@@ -215,23 +227,126 @@ string dynamic_karatsuba(int divide, string num1, string num2)
 }
 string multiplication(string num1, string num2)
 {
-    for (int i = 0; i < num1.size(); i++)
+    if (num1.size() < num2.size())
     {
+        string tmp = num1;
+        num1 = num2;
+        num2 = tmp;
     }
+    string final_num = "0";
+    int maxlen = max(num1.size(), num2.size());
+    paddingzero(&num1, maxlen - num1.size(), 1);
+    paddingzero(&num2, maxlen - num2.size(), 1);
+    for (int i = maxlen - 1; i >= 0; i--)
+    {
+        string plus_num = "";
+        int c = 0;
+        for (int j = maxlen - 1; j >= 0; j--)
+        {
+            times_mult = times_mult + 1;
+            int mult = (num1[i] - '0') * (num2[j] - '0');
+            mult = mult + c;
+            c = mult / 10;
+            mult = mult % 10;
+            plus_num = to_string(mult) + plus_num;
+        }
+        paddingzero(&plus_num, (maxlen - i - 1), 0);
+        final_num = plusnum(final_num, plus_num);
+    }
+    return final_num;
 }
 int main()
 {
+    srand(time(NULL));
     string num1 = "";
     string num2 = "";
     string ans = "";
-    int divide = 11;
+    int divide = 4;
+    double start_time = 0.0;
+    double end_time = 0.0;
     cout << "number1:";
     cin >> num1;
     cout << "number2:";
     cin >> num2;
-    ans = remove_zero(karatsuba(num1, num2));
-    cout << "divide 2  :" << ans << endl;
-    ans = remove_zero(dynamic_karatsuba(divide, num1, num2));
-    cout << "divide " << divide << "  :" << ans;
+    ofstream fout("log.txt");
+    vector<string> num;
+    int x = 0;
+    string num_m = "";
+    int totalnum = 3000;
+    for (int i = 1; i <= totalnum; i += 10)
+    {
+        num_m = "";
+        for (int j = 0; j < i; j++)
+        {
+            num_m = num_m + to_string(9 * rand() / (RAND_MAX + 1));
+        }
+        num.push_back(num_m);
+    }
+    for (int i = 1; i <= totalnum / 10; i++)
+    {
+        start_time = clock();
+        ans = remove_zero(karatsuba(num[i - 1], num[i - 1]));
+        end_time = clock();
+        fout << (end_time - start_time) / CLOCKS_PER_SEC;
+        if (i != totalnum / 10)
+        {
+            fout << ",";
+        }
+        cout << "divide 2  :" << ans << endl
+             << (end_time - start_time) / CLOCKS_PER_SEC << endl
+             << "times:" << times_2 << endl;
+        times_2 = 0;
+    }
+    fout << endl;
+    for (int i = 1; i <= totalnum / 10; i++)
+    {
+        start_time = clock();
+        ans = remove_zero(dynamic_karatsuba(divide, num[i - 1], num[i - 1]));
+        end_time = clock();
+        fout << (end_time - start_time) / CLOCKS_PER_SEC;
+        if (i != totalnum / 10)
+        {
+            fout << ",";
+        }
+        cout << "divide 4  :" << ans << endl
+             << (end_time - start_time) / CLOCKS_PER_SEC << endl
+             << "times:" << times_2 << endl;
+        times_2 = 0;
+    }
+    fout << endl;
+    for (int i = 1; i <= totalnum / 10; i++)
+    {
+        start_time = clock();
+        ans = remove_zero(multiplication(num[i - 1], num[i - 1]));
+        end_time = clock();
+        fout << (end_time - start_time) / CLOCKS_PER_SEC;
+        if (i != totalnum / 10)
+        {
+            fout << ",";
+        }
+        cout << "multiplication  :" << ans << endl
+             << (end_time - start_time) / CLOCKS_PER_SEC << endl
+             << "times:" << times_mult << endl;
+        times_mult = 0;
+    }
+    fout.close();
+    // start_time = clock();
+    // ans = remove_zero(dynamic_karatsuba(divide, num1, num2));
+    // end_time = clock();
+    // cout << "divide " << divide << "  :" << ans << endl
+    //      << (end_time - start_time) / CLOCKS_PER_SEC << endl
+    //      << "times:" << times_divide << endl;
+    // start_time = clock();
+    // ans = remove_zero(karatsuba(num1, num2));
+    // end_time = clock();
+    // cout << "divide 2 :" << ans << endl
+    //      << (end_time - start_time) / CLOCKS_PER_SEC << endl
+    //      << "times:" << times_2 << endl;
+    // start_time = clock();
+    // ans = remove_zero(multiplication(num1, num2));
+    // end_time = clock();
+    // cout << "traditional  :" << ans << endl
+    //      << (end_time - start_time) / CLOCKS_PER_SEC << endl
+    //      << "times:" << times_mult << endl;
     system("pause");
 }

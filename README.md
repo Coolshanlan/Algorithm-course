@@ -45,4 +45,4 @@ number of inversions in the input array? Justify your answer.
 d) Give an algorithm that determines the number of inversions in any permutation
 on n elements in θ(nlogn) worst-case time. (Hint: Modify merge sort.)
 ## week4-p8
-Directly solve the origin stock buying problem in θ(n) time. 
+Directly solve the origin stock buying problem in θ(n) time.
